@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | FoodiesHub</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #fafafa; color: #333; }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: white; display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .navbar h1 { color: #ff4d4d; }
+    .navbar ul { display: flex; gap: 25px; list-style: none; }
+    .navbar ul li a { text-decoration: none; color: #333; font-weight: 500; }
+    .navbar .btn {
+      background: #ff4d4d; color: #fff; padding: 8px 16px; border: none;
+      border-radius: 20px; cursor: pointer; transition: 0.3s;
+    }
+    .navbar .btn:hover { background: #e63939; }
+
+    /* Contact Section */
+    .contact { padding: 50px; max-width: 900px; margin: auto; }
+    .contact h2 { font-size: 28px; margin-bottom: 20px; color: #222; text-align: center; }
+    .contact-info { margin-bottom: 30px; text-align: center; }
+    .contact-info p { margin-bottom: 8px; font-size: 16px; color: #444; }
+
+    .contact form { display: flex; flex-direction: column; gap: 15px; }
+    .contact input, .contact textarea {
+      padding: 12px; border-radius: 10px; border: 1px solid #ccc; font-size: 14px;
+      width: 100%;
+    }
+    .contact button {
+      background: #ff4d4d; color: #fff; border: none; padding: 12px;
+      border-radius: 20px; font-size: 16px; cursor: pointer; transition: 0.3s;
+      width: 150px; align-self: center;
+    }
+    .contact button:hover { background: #e63939; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar { padding: 10px 20px; }
+      .contact { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>FoodiesHub</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      
+    </ul>
+    <button class="btn">Cart (0)</button>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p>📍 Address: FoodiesHub, MG Road, Pune, India</p>
+      <p>📞 Phone: +91 9876543210</p>
+      <p>📧 Email: support@foodieshub.com</p>
+    </div>
+    <form onsubmit="submitForm(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Thank you for contacting FoodiesHub! We will get back to you soon.");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

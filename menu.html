@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodiesHub | Menu</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #fafafa; color: #333; }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: white; display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .navbar h1 { color: #ff4d4d; }
+    .navbar ul { display: flex; gap: 25px; list-style: none; }
+    .navbar ul li a { text-decoration: none; color: #333; font-weight: 500; }
+    .navbar .btn {
+      background: #ff4d4d; color: #fff; padding: 8px 16px; border: none;
+      border-radius: 20px; cursor: pointer; transition: 0.3s;
+    }
+    .navbar .btn:hover { background: #e63939; }
+
+    /* Banner */
+    .restaurant-banner {
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      height: 250px; display: flex; align-items: flex-end; color: white;
+      padding: 30px 50px; position: relative;
+    }
+    .restaurant-banner::after {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .restaurant-info { position: relative; z-index: 2; }
+    .restaurant-info h2 { font-size: 32px; margin-bottom: 5px; }
+    .restaurant-info p { font-size: 16px; }
+
+    /* Filters */
+    .filters { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+    .filters button {
+      padding: 10px 20px; border: none; border-radius: 25px;
+      background: #eee; cursor: pointer; font-weight: 500; transition: 0.3s;
+    }
+    .filters button.active, .filters button:hover { background: #ff4d4d; color: white; }
+
+    /* Menu */
+    .menu { padding: 40px 50px; }
+    .menu h2 { margin-bottom: 20px; font-size: 28px; color: #222; }
+    .menu-category { margin-bottom: 40px; }
+    .menu-item {
+      display: flex; justify-content: space-between; align-items: center;
+      background: white; border-radius: 15px; padding: 15px; margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .menu-item:hover { transform: scale(1.01); transition: 0.2s; }
+    .item-details { flex: 1; }
+    .item-details h3 { font-size: 18px; margin-bottom: 5px; }
+    .item-details p { font-size: 14px; color: gray; margin-bottom: 5px; }
+    .item-details span { font-weight: bold; color: #ff4d4d; }
+    .item-img { width: 100px; height: 80px; margin-left: 20px; border-radius: 10px; object-fit: cover; }
+    .add-btn {
+      background: #ff4d4d; color: #fff; border: none; padding: 8px 14px;
+      border-radius: 20px; cursor: pointer; transition: 0.3s;
+    }
+    .add-btn:hover { background: #e63939; }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 10px 20px; }
+      .restaurant-banner { padding: 20px; height: 200px; }
+      .restaurant-info h2 { font-size: 24px; }
+      .menu { padding: 20px; }
+      .menu-item { flex-direction: column; align-items: flex-start; }
+      .item-img { margin: 10px 0 0; width: 100%; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>FoodiesHub</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+   <button class="btn" id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+  </div>
+
+  <!-- Banner -->
+  <section class="restaurant-banner">
+    <div class="restaurant-info">
+      <h2>FoodiesHub Menu</h2>
+      <p>⭐ 4.7 • 20-40 mins • Indian, Chinese, Western</p>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="veg">Veg</button>
+    <button class="filter-btn" data-filter="non-veg">Non-Veg</button>
+  </div>
+
+  <!-- Menu -->
+  <section class="menu">
+
+    <!-- Veg Gravies -->
+    <div class="menu-category">
+      <h2>Veg Gravies</h2>
+      <div class="menu-item" data-type="veg" data-name="Paneer Butter Masala" data-price="250">
+        <div class="item-details"><h3>Paneer Butter Masala</h3><p>Cottage cheese in tomato gravy</p><span>₹250</span></div>
+        <img src="images/download (2).jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Chole Masala" data-price="180">
+        <div class="item-details"><h3>Chole Masala</h3><p>Spicy chickpea curry</p><span>₹180</span></div>
+        <img src="images/Chole Recipe (Punjabi Chole Masala).jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Palak Paneer" data-price="220">
+        <div class="item-details"><h3>Palak Paneer</h3><p>Spinach curry with paneer</p><span>₹220</span></div>
+        <img src="images/Vegan Palak Tofu Paneer.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Veg Korma" data-price="210">
+        <div class="item-details"><h3>Veg Korma</h3><p>Mixed vegetables in cashew curry</p><span>₹210</span></div>
+        <img src="images/Navratan Korma - Pepper Delight.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Bhindi Masala" data-price="190">
+        <div class="item-details"><h3>Bhindi Masala</h3><p>Okra stir fried with onions</p><span>₹190</span></div>
+        <img src="images/Maharashtrian Style Bhindi Masala Recipe - Cooking Carnival.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+    </div>
+
+    <!-- Non-Veg Gravies -->
+    <div class="menu-category">
+      <h2>Non-Veg Gravies</h2>
+      <div class="menu-item" data-type="non-veg" data-name="Butter Chicken" data-price="320">
+        <div class="item-details"><h3>Butter Chicken</h3><p>Chicken in creamy tomato sauce</p><span>₹320</span></div>
+        <img src="images/Quick Easy Homemade Butter Chicken in Just 30 Minutes! - MadeBy2Sisters.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="non-veg" data-name="Mutton Rogan Josh" data-price="420">
+        <div class="item-details"><h3>Mutton Rogan Josh</h3><p>Kashmiri-style lamb curry</p><span>₹420</span></div>
+        <img src="images/Mutton Rogan Josh Recipe_ How to make Mutton Rogan Josh at Home _ Homemade Mutton Rogan Josh Recipe - Times Food.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="non-veg" data-name="Chicken Curry" data-price="280">
+        <div class="item-details"><h3>Chicken Curry</h3><p>Spicy onion-tomato chicken curry</p><span>₹280</span></div>
+        <img src="images/Authentic Indian Chicken Curry Recipe.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="non-veg" data-name="Prawns Masala" data-price="350">
+        <div class="item-details"><h3>Prawns Masala</h3><p>Spicy prawns curry</p><span>₹350</span></div>
+        <img src="images/Shrimp Masala Curry (Prawn Masala).jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+    </div>
+
+    <!-- Indian Breads -->
+    <div class="menu-category">
+      <h2>Indian Breads</h2>
+      <div class="menu-item" data-type="veg" data-name="Roti" data-price="20">
+        <div class="item-details"><h3>Roti</h3><p>Freshly made tandoor roti</p><span>₹20</span></div>
+        <img src="images/Step-by-Step Guide for Perfect Homemade Chapati Every Time.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Butter Naan" data-price="40">
+        <div class="item-details"><h3>Butter Naan</h3><p>Soft naan brushed with butter</p><span>₹40</span></div>
+        <img src="images/Butter Naan.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Garlic Naan" data-price="50">
+        <div class="item-details"><h3>Garlic Naan</h3><p>Fluffy naan with garlic</p><span>₹50</span></div>
+        <img src="images/Garlic Naan Recipe (Without Yeast) - Cubes N Juliennes.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+    </div>
+
+    <!-- Starters -->
+    <div class="menu-category">
+      <h2>Starters</h2>
+      <div class="menu-item" data-type="veg" data-name="Paneer Tikka" data-price="200">
+        <div class="item-details"><h3>Paneer Tikka</h3><p>Grilled paneer cubes with spices</p><span>₹200</span></div>
+        <img src="images/Paneer Tikka Skewers 🔥🥙.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Spring Rolls" data-price="160">
+        <div class="item-details"><h3>Spring Rolls</h3><p>Crispy fried veg rolls</p><span>₹160</span></div>
+        <img src="images/Veg Spring Rolls _ Vegetables Spring Rolls with Homemade Sheets _ Authentic Chinese Food.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="non-veg" data-name="Chicken Tandoori" data-price="280">
+        <div class="item-details"><h3>Chicken Tandoori</h3><p>Charcoal grilled chicken</p><span>₹280</span></div>
+        <img src="images/How To Make Perfect Tandoori Chicken, Without A Tandoor.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="non-veg" data-name="Fish Fry" data-price="300">
+        <div class="item-details"><h3>Fish Fry</h3><p>Golden fried fish</p><span>₹300</span></div>
+        <img src="images/Kerala Fish Fry _ The Take It Easy Chef.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+    </div>
+
+    <!-- Beverages -->
+    <div class="menu-category">
+      <h2>Beverages</h2>
+      <div class="menu-item" data-type="veg" data-name="Masala Chai" data-price="40">
+        <div class="item-details"><h3>Masala Chai</h3><p>Spiced Indian tea</p><span>₹40</span></div>
+        <img src="images/How to Make Authentic Masala Chai at Home_ A Spiced Indian Tea Recipe.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Cold Coffee" data-price="120">
+        <div class="item-details"><h3>Cold Coffee</h3><p>Refreshing chilled coffee</p><span>₹120</span></div>
+        <img src="images/1000+ ideas about Iced Coffee on Pinterest….jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+      <div class="menu-item" data-type="veg" data-name="Mango Lassi" data-price="100">
+        <div class="item-details"><h3>Mango Lassi</h3><p>Sweet yogurt mango drink</p><span>₹100</span></div>
+        <img src="images/Mango Lassi.jpg" class="item-img"><button class="add-btn">Add</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        menuItems.forEach(item => {
+          if (filter === 'all' || item.dataset.type === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
+    const addButtons = document.querySelectorAll('.add-btn');
+    const cartCountElem = document.getElementById('cart-count');
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartCount() {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCountElem.textContent = totalItems;
+    }
+
+    addButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const itemElem = btn.closest('.menu-item');
+        const name = itemElem.getAttribute('data-name');
+        const price = parseInt(itemElem.getAttribute('data-price'));
+
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+          existingItem.quantity++;
+        } else {
+          cart.push({ name, price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+      });
+    });
+
+    updateCartCount();
+
+    document.getElementById('cart-btn').addEventListener('click', () => {
+      window.location.href = 'cart.html';
+    });
+  </script>
+</body>
+</html>
